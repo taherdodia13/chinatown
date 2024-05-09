@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14010318993",
+    "project_id": "chinatownmain-febce",
+    "storage_bucket": "chinatownmain-febce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14010318993:android:7cc784178b29005fc77f30",
+        "android_client_info": {
+          "package_name": "com.example.dummy_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXRrza_9BZo_qQBhC0h5lzUmX9PPpJwg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
