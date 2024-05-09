@@ -2,6 +2,6 @@ class AppAssets {
   static const String _imagePath = 'assets/images';
 
   /// app images
-  static String logo = '$_imagePath/logo.png';
-
+  static String loginImage = '$_imagePath/login_image.png';
+  static String googleIcon = '$_imagePath/google.png';
 }
