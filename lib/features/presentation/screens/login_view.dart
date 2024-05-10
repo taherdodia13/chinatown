@@ -1,9 +1,10 @@
-import 'package:dummy_1/constants/app_colors.dart';
 import 'package:dummy_1/features/presentation/widgets/app_textfield.dart';
 import 'package:dummy_1/features/presentation/widgets/main_button.dart';
-import 'package:flutter/material.dart';
-
+import 'package:dummy_1/constants/app_colors.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
 import '../../../constants/app_images.dart';
+import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -17,77 +18,142 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kf2f2f2,
-      body: SingleChildScrollView(
+      body: DefaultTabController(
+        initialIndex: 0,
+        length: 2,
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height / 2.3,
-              decoration: const BoxDecoration(
-                color: AppColors.kFFFFFF,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height / 2.3,
+                  decoration: const BoxDecoration(
+                    color: AppColors.kFFFFFF,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TabBar(
+                        labelPadding: EdgeInsets.symmetric(vertical: 10),
+                        indicatorColor: AppColors.kFA4A0C,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        tabs: <Widget>[
+                          Text(
+                            'Login',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(
+                            'Sign-up',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              child: Column(
-                children: [
-                  const Spacer(),
-                  Image.asset(AppAssets.loginImage),
+                Positioned(
+                  left: 20,
+                  top: 40,
+                  child: Image.asset(AppAssets.loginImage),
+                )
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: <Widget>[
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 70, horizontal: 50),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppTextFormField(
+                            name: 'email',
+                            hintText: 'Email',
+                            fillColor: Colors.transparent,
+                            hasBorder: true,
+                            contentPadding: EdgeInsets.symmetric(vertical: 10),
+                          ),
+                          const SizedBox(height: 40),
+                          const AppTextFormField(
+                            name: 'password',
+                            hintText: 'Password',
+                            hasBorder: true,
+                            fillColor: Colors.transparent,
+                            contentPadding: EdgeInsets.symmetric(vertical: 10),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            'Forgot password?',
+                            style: TextStyle(color: AppColors.kFA4A0C),
+                          ),
+                          // const SizedBox(height: 5),
+                          MainButton(
+                            onPressed: () {},
+                            text: 'Login',
+                          ),
+                          MainButton.icon(
+                            buttonColor: AppColors.kFFFFFF,
+                            fontColor: AppColors.k000000,
+                            borderSide:
+                                const BorderSide(color: AppColors.kc4c4c4),
+                            icon: SizedBox(
+                              height: 20,
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.googleIcon,
+                                ),
+                              ),
+                            ),
+                            horizontalSpace: 5,
+                            onPressed: () {},
+                            isIconAtStart: true,
+                            text: 'Continue with Google',
+                            fontSize: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 60,
+                      horizontal: 50,
+                    ),
+                    child: Column(
+                      children: [
+                        const AppTextFormField(
+                          name: 'email',
+                          hintText: 'Email',
+                          preFixIcon: Icon(Icons.mail),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20),
+                        ),
+                        const SizedBox(height: 12),
+                        const AppTextFormField(
+                          name: 'password',
+                          hintText: 'Password',
+                          preFixIcon: Icon(Icons.lock_outline),
+                          suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20),
+                        ),
+                        const SizedBox(height: 100),
+                        MainButton(
+                          onPressed: () {},
+                          text: 'Create Account',
+                          minimumSize: const Size(180, 50),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const AppTextFormField(
-                    name: 'email',
-                    hintText: 'Email',
-                    fillColor: Colors.transparent,
-                    hasBorder: true,
-                    contentPadding: EdgeInsets.symmetric(vertical: 10),
-                  ),
-                  const SizedBox(height: 40),
-                  const AppTextFormField(
-                    name: 'password',
-                    hintText: 'Password',
-                    hasBorder: true,
-                    fillColor: Colors.transparent,
-                    contentPadding: EdgeInsets.symmetric(vertical: 10),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'Forgot password?',
-                    style: TextStyle(color: AppColors.kFA4A0C),
-                  ),
-                  // const SizedBox(height: 5),
-                  MainButton(
-                    onPressed: () {},
-                    text: 'Login',
-                  ),
-                  MainButton.icon(
-                    buttonColor: AppColors.kFFFFFF,
-                    fontColor: AppColors.k000000,
-                    borderSide: const BorderSide(color: AppColors.kc4c4c4),
-                    icon: SizedBox(
-                      height: 20,
-                      child: Image(
-                        image: AssetImage(
-                          AppAssets.googleIcon,
-                        ),
-                      ),
-                    ),
-                    horizontalSpace: 5,
-                    onPressed: () {},
-                    isIconAtStart: true,
-                    text: 'Continue with Google',
-                    fontSize: 16,
-                  ),
-                ],
-              ),
-            )
           ],
         ),
       ),
