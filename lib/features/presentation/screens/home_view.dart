@@ -1,6 +1,4 @@
-import 'package:dummy_1/features/presentation/widgets/app_textfield.dart';
 import 'package:dummy_1/constants/app_images.dart';
-import 'package:flutter/widgets.dart';
 import '../../../constants/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +11,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
       length: 3,
       child: Scaffold(
-        key: _scaffoldKey,
         backgroundColor: AppColors.kf2f2f2,
         appBar: AppBar(
           backgroundColor: AppColors.kFFFFFF,
@@ -48,12 +43,9 @@ class _HomeViewState extends State<HomeView> {
           centerTitle: false,
           actions: [
             IconButton(
-              onPressed: () {
-                print('hello');
-                _scaffoldKey.currentState?.openEndDrawer();
-              },
+              onPressed: () {},
               icon: const Icon(
-                Icons.notifications_outlined,
+                Icons.shopping_cart_rounded,
                 size: 30,
                 color: AppColors.kF63939,
               ),
@@ -73,43 +65,20 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: AppTextFormField(
-                      name: 'search',
-                      showBorderRadius: true,
-                      contentPadding: EdgeInsets.zero,
-                      constraints: BoxConstraints.loose(
-                        const Size(
-                          double.maxFinite,
-                          35,
-                        ),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: SizedBox(
+                      height: 170,
+                      child: PageView.builder(
+                        controller: PageController(viewportFraction: 0.8),
+                        itemBuilder: (context, index) {
+                          return Image.asset(AppAssets.banner);
+                        },
+                        itemCount: 3,
+                        scrollBehavior: const CupertinoScrollBehavior(),
                       ),
-                      hintText: 'Discover & Get Delicious Food',
-                      borderRadius: 30,
-                      preFixIcon: const Icon(
-                        Icons.search,
-                        color: AppColors.kF63939,
-                      ),
-                      fillColor: AppColors.kf9eeee,
-                      validate: (value) {
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 170,
-                    child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.8),
-                      itemBuilder: (context, index) {
-                        return Image.asset(AppAssets.banner);
-                      },
-                      itemCount: 3,
-                      scrollBehavior: const CupertinoScrollBehavior(),
                     ),
                   ),
                   const TabBar(
@@ -148,77 +117,6 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ],
-        ),
-        endDrawer: SizedBox(
-          width: MediaQuery.of(context).size.width / 1.5,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(80),
-              bottomLeft: Radius.circular(80),
-            ),
-            child: Drawer(
-              backgroundColor: AppColors.kF63939,
-              child: Column(
-                children: <Widget>[
-                  const DrawerHeader(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.notifications,
-                          color: AppColors.kFFFFFF,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Notifications',
-                          style: TextStyle(
-                            color: AppColors.kFFFFFF,
-                            fontSize: 24,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: AppColors.kFFFFFF,
-                                borderRadius: BorderRadius.circular(10),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: const Icon(
-                                Icons.shop_outlined,
-                                color: AppColors.kF63939,
-                              )),
-                          title: const Text(
-                            'We have added a product you might like.',
-                            style: TextStyle(color: AppColors.kFFFFFF),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                        );
-                      },
-                      separatorBuilder: (context, index) => const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Divider(
-                          color: AppColors.kFFFFFF,
-                          height: 0,
-                        ),
-                      ),
-                      itemCount: 12,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
         ),
       ),
     );

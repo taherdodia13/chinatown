@@ -6,6 +6,8 @@ import 'package:dummy_1/constants/app_colors.dart';
 import '../../../constants/app_images.dart';
 import 'package:flutter/material.dart';
 
+import 'order_view.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -96,7 +98,13 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         // const SizedBox(height: 5),
                         MainButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const OrderView(),
+                              ),
+                            );
+                          },
                           text: 'Login',
                         ),
                         MainButton.icon(
