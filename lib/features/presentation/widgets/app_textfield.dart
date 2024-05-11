@@ -1,8 +1,7 @@
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import '../../../constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-
-import '../../../constants/app_colors.dart';
 
 /// App text form field
 
@@ -68,6 +67,7 @@ class AppTextFormField<T> extends StatelessWidget {
     this.counter,
     this.dropDownItems,
     this.isObscure = false,
+    this.showBorderRadius = false,
     Key? key,
     this.textStyle,
   }) : super(key: key);
@@ -81,6 +81,8 @@ class AppTextFormField<T> extends StatelessWidget {
 
   /// Show / hide the hint text
   final bool showHint;
+
+  /// isObscure
   final bool isObscure;
 
   ///Validate
@@ -104,6 +106,12 @@ class AppTextFormField<T> extends StatelessWidget {
   ///Read only
   final bool enabled;
 
+  ///Show BorderRadius
+  final bool showBorderRadius;
+
+  ///BorderRadius
+  final double borderRadius;
+
   /// Enable Color
   final Color? enableColor;
 
@@ -118,8 +126,6 @@ class AppTextFormField<T> extends StatelessWidget {
 
   ///Letter Spacing
   final double letterSpacing;
-
-  final double borderRadius;
 
   ///Maximum Length
   final int? maxLength;
@@ -328,6 +334,7 @@ class AppTextFormField<T> extends StatelessWidget {
       suffixIconConstraints:
           BoxConstraints.tight(suffixWidgetSize ?? const Size(50, 50)),
       constraints: constraints,
+      border: _buildBorder(),
       focusedErrorBorder: _buildBorder(),
       enabledBorder: _buildBorder(),
       disabledBorder: _buildBorder(),
@@ -342,5 +349,8 @@ class AppTextFormField<T> extends StatelessWidget {
 
   InputBorder _buildBorder() => UnderlineInputBorder(
         borderSide: hasBorder ? const BorderSide() : BorderSide.none,
+        borderRadius: showBorderRadius
+            ? BorderRadius.circular(borderRadius)
+            : const BorderRadius.only(),
       );
 }

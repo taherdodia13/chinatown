@@ -1,7 +1,6 @@
 import 'package:dummy_1/constants/app_colors.dart';
 import 'package:dummy_1/constants/app_images.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/app_textfield.dart';
 import '../widgets/main_button.dart';
 
@@ -88,6 +87,7 @@ class _ProfileViewState extends State<ProfileView> {
                     buildTextField(
                       name: 'phone',
                       label: 'Phone Number',
+                      maxLength: 10,
                       preFixIcon: const Center(
                         child: Text('+91'),
                       ),
@@ -116,6 +116,7 @@ class _ProfileViewState extends State<ProfileView> {
     required String name,
     required String label,
     Widget? preFixIcon,
+    int? maxLength,
     String? Function(dynamic)? validate,
     TextInputType keyboardType = TextInputType.text,
   }) {
@@ -124,12 +125,16 @@ class _ProfileViewState extends State<ProfileView> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(label),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         AppTextFormField(
           name: name,
           preFixIcon: preFixIcon,
-          contentPadding: const EdgeInsets.symmetric(vertical: 20),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
           validate: validate,
+          showBorderRadius: true,
+          maxLength: maxLength,
+          borderRadius: 15,
           keyboardType: keyboardType,
         ),
       ],

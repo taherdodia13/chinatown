@@ -1,3 +1,4 @@
+import 'package:dummy_1/features/presentation/screens/navigation_view.dart';
 import 'package:dummy_1/features/presentation/widgets/app_textfield.dart';
 import 'package:dummy_1/features/presentation/screens/profile_view.dart';
 import 'package:dummy_1/features/presentation/widgets/main_button.dart';
@@ -40,6 +41,8 @@ class _LoginViewState extends State<LoginView> {
                       TabBar(
                         labelPadding: EdgeInsets.symmetric(vertical: 10),
                         indicatorColor: AppColors.kF63939,
+                        unselectedLabelColor: AppColors.k000000,
+                        labelColor: AppColors.kF63939,
                         indicatorSize: TabBarIndicatorSize.label,
                         tabs: <Widget>[
                           Text(
@@ -134,6 +137,8 @@ class _LoginViewState extends State<LoginView> {
                           hintText: 'Email',
                           preFixIcon: Icon(Icons.mail),
                           contentPadding: EdgeInsets.symmetric(vertical: 20),
+                          showBorderRadius: true,
+                          borderRadius: 15,
                         ),
                         const SizedBox(height: 12),
                         const AppTextFormField(
@@ -141,11 +146,19 @@ class _LoginViewState extends State<LoginView> {
                           hintText: 'Password',
                           preFixIcon: Icon(Icons.lock_outline),
                           suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                          showBorderRadius: true,
+                          borderRadius: 15,
                           contentPadding: EdgeInsets.symmetric(vertical: 20),
                         ),
                         const SizedBox(height: 100),
                         MainButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const NavigationView(),
+                              ),
+                            );
+                          },
                           text: 'Create Account',
                           minimumSize: const Size(180, 50),
                         ),
