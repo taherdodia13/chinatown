@@ -1,8 +1,7 @@
 import 'package:dummy_1/features/presentation/widgets/app_textfield.dart';
+import 'package:dummy_1/features/presentation/screens/profile_view.dart';
 import 'package:dummy_1/features/presentation/widgets/main_button.dart';
 import 'package:dummy_1/constants/app_colors.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/painting.dart';
 import '../../../constants/app_images.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
                     children: [
                       TabBar(
                         labelPadding: EdgeInsets.symmetric(vertical: 10),
-                        indicatorColor: AppColors.kFA4A0C,
+                        indicatorColor: AppColors.kF63939,
                         indicatorSize: TabBarIndicatorSize.label,
                         tabs: <Widget>[
                           Text(
@@ -67,65 +66,67 @@ class _LoginViewState extends State<LoginView> {
               child: TabBarView(
                 children: <Widget>[
                   SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 70, horizontal: 50),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const AppTextFormField(
-                            name: 'email',
-                            hintText: 'Email',
-                            fillColor: Colors.transparent,
-                            hasBorder: true,
-                            contentPadding: EdgeInsets.symmetric(vertical: 10),
-                          ),
-                          const SizedBox(height: 40),
-                          const AppTextFormField(
-                            name: 'password',
-                            hintText: 'Password',
-                            hasBorder: true,
-                            fillColor: Colors.transparent,
-                            contentPadding: EdgeInsets.symmetric(vertical: 10),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            'Forgot password?',
-                            style: TextStyle(color: AppColors.kFA4A0C),
-                          ),
-                          // const SizedBox(height: 5),
-                          MainButton(
-                            onPressed: () {},
-                            text: 'Login',
-                          ),
-                          MainButton.icon(
-                            buttonColor: AppColors.kFFFFFF,
-                            fontColor: AppColors.k000000,
-                            borderSide:
-                                const BorderSide(color: AppColors.kc4c4c4),
-                            icon: SizedBox(
-                              height: 20,
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.googleIcon,
-                                ),
+                    padding: const EdgeInsets.all(50),
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const AppTextFormField(
+                          name: 'email',
+                          hintText: 'Email',
+                          fillColor: Colors.transparent,
+                          hasBorder: true,
+                          contentPadding: EdgeInsets.symmetric(vertical: 10),
+                        ),
+                        const SizedBox(height: 40),
+                        const AppTextFormField(
+                          name: 'password',
+                          hintText: 'Password',
+                          hasBorder: true,
+                          fillColor: Colors.transparent,
+                          contentPadding: EdgeInsets.symmetric(vertical: 10),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Forgot password?',
+                          style: TextStyle(color: AppColors.kFA4A0C),
+                        ),
+                        // const SizedBox(height: 5),
+                        MainButton(
+                          onPressed: () {},
+                          text: 'Login',
+                        ),
+                        MainButton.icon(
+                          buttonColor: AppColors.kFFFFFF,
+                          fontColor: AppColors.k000000,
+                          borderSide:
+                              const BorderSide(color: AppColors.kc4c4c4),
+                          icon: SizedBox(
+                            height: 20,
+                            child: Image(
+                              image: AssetImage(
+                                AppAssets.googleIcon,
                               ),
                             ),
-                            horizontalSpace: 5,
-                            onPressed: () {},
-                            isIconAtStart: true,
-                            text: 'Continue with Google',
-                            fontSize: 16,
                           ),
-                        ],
-                      ),
+                          horizontalSpace: 5,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const ProfileView(),
+                              ),
+                            );
+                          },
+                          isIconAtStart: true,
+                          text: 'Continue with Google',
+                          fontSize: 16,
+                        ),
+                      ],
                     ),
                   ),
                   SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 60,
-                      horizontal: 50,
-                    ),
+                    padding: const EdgeInsets.all(50),
+                    physics: const BouncingScrollPhysics(),
                     child: Column(
                       children: [
                         const AppTextFormField(

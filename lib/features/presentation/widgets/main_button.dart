@@ -21,7 +21,7 @@ class MainButton extends StatelessWidget {
     this.margin,
     this.alignment,
     this.isLoading = false,
-    this.fontSize = 20,
+    this.fontSize = 18,
     this.isIconAtStart = false,
   }) {
     _child = Text(
