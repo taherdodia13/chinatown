@@ -1,12 +1,11 @@
 import 'package:dummy_1/features/presentation/screens/navigation_view.dart';
+import 'package:dummy_1/features/presentation/screens/product_detail.dart';
 import 'package:dummy_1/features/presentation/widgets/app_textfield.dart';
 import 'package:dummy_1/features/presentation/screens/profile_view.dart';
 import 'package:dummy_1/features/presentation/widgets/main_button.dart';
 import 'package:dummy_1/constants/app_colors.dart';
 import '../../../constants/app_images.dart';
 import 'package:flutter/material.dart';
-
-import 'order_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -101,7 +100,7 @@ class _LoginViewState extends State<LoginView> {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const OrderView(),
+                                builder: (context) => const ProductDetailView(),
                               ),
                             );
                           },

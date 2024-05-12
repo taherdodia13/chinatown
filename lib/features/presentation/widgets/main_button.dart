@@ -64,8 +64,8 @@ class MainButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         child ?? const SizedBox.shrink(),
-        SizedBox(width: horizontalSpace),
         if (isIconAtStart) icon,
+        SizedBox(width: horizontalSpace),
         if (text.isNotEmpty && child == null)
           Text(
             text,
