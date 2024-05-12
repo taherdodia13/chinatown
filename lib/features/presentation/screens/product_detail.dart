@@ -106,7 +106,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               isIconAtStart: true,
               onPressed: () {},
               text: 'Add to Cart',
-            )
+            ),
           ],
         ),
       ),

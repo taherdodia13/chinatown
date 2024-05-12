@@ -1,5 +1,5 @@
+import 'package:dummy_1/features/presentation/screens/confirm_order_view.dart';
 import 'package:dummy_1/features/presentation/screens/navigation_view.dart';
-import 'package:dummy_1/features/presentation/screens/product_detail.dart';
 import 'package:dummy_1/features/presentation/widgets/app_textfield.dart';
 import 'package:dummy_1/features/presentation/screens/profile_view.dart';
 import 'package:dummy_1/features/presentation/widgets/main_button.dart';
@@ -100,7 +100,7 @@ class _LoginViewState extends State<LoginView> {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const ProductDetailView(),
+                                builder: (context) => const ConfirmOrderView(),
                               ),
                             );
                           },
